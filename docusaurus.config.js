@@ -213,7 +213,7 @@ module.exports = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           remarkPlugins: [
-            [require('@docusaurus/remark-plugin-npm2yarn'), { sync: true }],
+            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
           ],
           editUrl:
             'https://github.com/testing-library/testing-library-docs/edit/main/',
@@ -232,7 +232,7 @@ module.exports = {
         },
         gtag: {
           trackingID: 'UA-137787095-1',
-        }
+        },
       },
     ],
   ],
@@ -354,6 +354,19 @@ module.exports = {
       appId: 'TUPO88CFRP',
       apiKey: 'b232f752ed8fb44d7ff8e7883aa64668',
       indexName: 'testing-library',
+    },
+  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh-CN'],
+    localeConfigs: {
+      en: {
+        htmlLang: 'en-GB',
+      },
+      'zh-CN': {
+        label: '中文（中国）',
+        htmlLang: 'zh-cn',
+      },
     },
   },
 }

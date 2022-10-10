@@ -6,9 +6,10 @@
   "scripts": {
     "examples": "docusaurus-examples",
     "start": "docusaurus start",
+    "startZH": "npm run start -- --locale zh-CN",
     "build": "docusaurus build",
     "serve": "docusaurus serve",
-    "write-translations": "docusaurus-write-translations",
+    "write-translations": "docusaurus write-translations --locale zh-CN",
     "version": "docusaurus-version",
     "rename-version": "docusaurus-rename-version",
     "format": "prettier --write '**/*.{js,json,mdx}'",

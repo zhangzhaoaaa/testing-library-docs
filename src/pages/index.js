@@ -11,14 +11,16 @@ import {GridBlock} from '../components/GridBlock'
 import {Container} from '../components/Container'
 import {Showcase} from '../components/Showcase'
 import Layout from '@theme/Layout'
+import Translate from '@docusaurus/Translate'
 
 const HomeSplash = props => {
   const {language = ''} = props
-  const {siteConfig} = useDocusaurusContext()
+  const {siteConfig, i18n} = useDocusaurusContext()
   const {baseUrl, customFields} = siteConfig
   const docsPart = `${customFields.docsPath ? `${customFields.docsPath}/` : ''}`
   const langPart = `${language ? `${language}/` : ''}`
   const docUrl = doc => `${baseUrl}${docsPart}${langPart}${doc}`
+  console.log(i18n.currentLocale)
 
   const SplashContainer = props => (
     <div className="homeContainer">
@@ -38,7 +40,13 @@ const HomeSplash = props => {
     <div>
       <h2 className="projectTitle">{siteConfig.title}</h2>
       <div className="projectTaglineWrapper">
-        <p className="projectTagline">{siteConfig.tagline}</p>
+        <p className="projectTagline">
+          {i18n.currentLocale === 'en' ? (
+            siteConfig.tagline
+          ) : (
+            <Translate id="homepage.tagline"></Translate>
+          )}
+        </p>
       </div>
     </div>
   )
@@ -59,16 +67,44 @@ const HomeSplash = props => {
       <div className="inner">
         <ProjectTitle siteConfig={siteConfig} />
         <div className="pluginWrapper buttonWrapper">
-          <Button href={'/docs/'}>Get Started</Button>
+          <Button href={'/docs/'}>
+            {i18n.currentLocale === 'en' ? (
+              'Get Started'
+            ) : (
+              <Translate id="homepage.getstart"></Translate>
+            )}
+          </Button>
         </div>
       </div>
     </SplashContainer>
   )
 }
 
+const FeatureCallout = () => {
+  const {i18n} = useDocusaurusContext()
+  return (
+    <Container className="" background={'light'} padding={['top', 'bottom']}>
+      <div style={{textAlign: 'center'}}>
+        <p>
+          <i>
+            {i18n.currentLocale === 'en' ? (
+              <>
+                The more your tests resemble the way your software is used,{' '}
+                <br />
+                the more confidence they can give you.
+              </>
+            ) : (
+              <Translate id="homepage.principle"></Translate>
+            )}
+          </i>
+        </p>
+      </div>
+    </Container>
+  )
+}
 export default class Index extends React.Component {
   render() {
-    const {config: siteConfig, language = ''} = this.props
+    const {config: siteConfig, language = '', i18n} = this.props
     const {baseUrl} = siteConfig
 
     const Block = props => (
@@ -83,19 +119,6 @@ export default class Index extends React.Component {
           contents={props.children}
           layout={props.layout}
         />
-      </Container>
-    )
-
-    const FeatureCallout = () => (
-      <Container className="" background={'light'} padding={['top', 'bottom']}>
-        <div style={{textAlign: 'center'}}>
-          <p>
-            <i>
-              The more your tests resemble the way your software is used, <br />
-              the more confidence they can give you.
-            </i>
-          </p>
-        </div>
       </Container>
     )
 
