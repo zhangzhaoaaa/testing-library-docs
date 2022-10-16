@@ -11,7 +11,7 @@ import {GridBlock} from '../components/GridBlock'
 import {Container} from '../components/Container'
 import {Showcase} from '../components/Showcase'
 import Layout from '@theme/Layout'
-import Translate from '@docusaurus/Translate'
+import Translate, {translate} from '@docusaurus/Translate'
 
 const HomeSplash = props => {
   const {language = ''} = props
@@ -170,24 +170,34 @@ export default class Index extends React.Component {
       <Block layout="twoColumn">
         {[
           {
-            content:
-              'Tests only break when your app breaks, not implementation details',
+            content: translate({
+              id: 'homepage.wrt.summary',
+            }),
             image: `${baseUrl}img/wrench-128x128.png`,
             imageAlign: 'top',
-            title: 'Write Maintainable Tests',
+            title: translate({
+              id: 'homepage.wrt.title',
+            }),
           },
           {
-            content: 'Interact with your app the same way as your users',
+            content: translate({
+              id: 'homepage.dwc.summary',
+            }),
             image: `${baseUrl}img/check-128x128.png`,
             imageAlign: 'top',
-            title: 'Develop with Confidence',
+            title: translate({
+              id: 'homepage.dwc.title',
+            }),
           },
           {
-            content:
-              'Built-in selectors find elements the way users do to help you write inclusive code',
+            content: translate({
+              id: 'homepage.acd.summary',
+            }),
             image: `${baseUrl}img/tada-128x128.png`,
             imageAlign: 'top',
-            title: 'Accessible by Default',
+            title: translate({
+              id: 'homepage.acd.title',
+            }),
           },
         ]}
       </Block>
